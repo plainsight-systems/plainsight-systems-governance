@@ -51,6 +51,8 @@ Coordinator
 - Non-trivial changes require verification tied to the acceptance criteria.
 - Non-trivial C++ changes require an architecture note before implementation
   and a C++ architecture review before acceptance.
+- Performance-sensitive C++ changes require a performance note before
+  implementation and a C++ performance review before acceptance.
 - Reviewer and implementer should be distinct for material changes.
 - QA identity should differ from the developer identity for non-trivial behavior.
 - New decisions and lessons must be indexed in `MEMORY.md`.
@@ -94,6 +96,22 @@ C++ architecture.
 - **Why this decomposition is appropriate:**
 - **What is intentionally not abstracted:**
 
+## C++ Performance Note
+
+Required for performance-sensitive C++ changes, including edge-native AI,
+real-time paths, high-volume data processing, startup/model-load performance,
+memory-sensitive code, or known hot paths.
+
+- **Target hardware/workload:**
+- **Performance budget:**
+- **Baseline measurement:**
+- **Hot paths touched:**
+- **Allocation/copy/serialization behavior:**
+- **Concurrency model:**
+- **Edge AI runtime/backend/configuration:**
+- **Before/after measurement plan:**
+- **Accuracy/product-contract risk from performance optimizations:**
+
 ## Records
 ```
 
@@ -114,6 +132,21 @@ lifetime, abstraction quality, and testability.
 Acceptance should be blocked when the review identifies a P0 or P1 architecture
 finding. P2 findings may block acceptance when they affect shared components,
 public API, dependency direction, or future testability.
+
+## C++ Performance Gate
+
+For performance-sensitive C++ changes, use `cpp_performance_playbook.md` during
+packet shaping and `cpp_performance_review.md` during review.
+
+The performance review is distinct from code-style, compiler, linter, static
+analysis, architecture, and QA checks. Its job is to evaluate whether the change
+preserves the reason the product chose C++: measured latency, throughput,
+memory, power, locality, and runtime behavior on target hardware.
+
+Acceptance should be blocked when the review identifies a P0 or P1 performance
+finding. P2 findings may block acceptance when they affect hot paths,
+edge-native AI pipelines, real-time behavior, memory footprint, or future
+performance observability.
 
 ## When to Escalate
 
