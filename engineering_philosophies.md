@@ -59,6 +59,40 @@ opposite of this philosophy and is forbidden.
   demonstrated on a narrow scope, expanding to broader scope over time. If a
   plan contains such an upgrade step, the early deliverable was demo-ware.
 
+### Simple without taking control away
+
+The Apple reference point is not minimalism for its own sake. The goal is to
+make the product feel obvious, calm, and approachable while preserving the
+user's ability to understand, inspect, correct, and override important behavior.
+
+Simplicity means the product has done the thinking work before the user arrives.
+It does not mean hiding consequential state, removing necessary controls, or
+forcing every user through a single paternalistic path. A product is not simpler
+because it removed a decision the user still needs to make; it is simpler when
+the decision is framed clearly, defaults are excellent, and advanced control is
+available at the moment it becomes relevant.
+
+This means:
+
+- Prefer excellent defaults, direct manipulation, and clear primary actions.
+- Keep the first path through a workflow obvious without making it the only
+  path.
+- Hide incidental complexity, not consequential state.
+- Progressive disclosure is good when it reveals control at the point of need.
+  It is bad when it buries control the user predictably needs.
+- Do not remove a control because it is hard to design. Redesign the control
+  until it is understandable, or explicitly decide the product does not support
+  that user capability.
+- Do not replace user agency with automation unless the user can inspect the
+  result and correct or override it when the decision matters.
+- Default to reversible actions, visible state, and recoverable workflows.
+- Avoid preference panels full of arbitrary knobs, but do expose controls that
+  map to real user intent, risk, cost, privacy, or output quality.
+
+For agents and implementers, "make it simpler" is not permission to delete
+capability. The correct question is: what is the smallest understandable
+surface that still gives the user meaningful control over the outcome?
+
 ## Hardware and Platform Specificity
 
 When the product depends on a chosen platform, write to that platform honestly.
