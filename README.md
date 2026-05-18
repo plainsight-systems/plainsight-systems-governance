@@ -8,6 +8,7 @@ guidance that apply across Plainsight Systems LLC operating brands and products.
 - [plainsight_policies.md](./plainsight_policies.md) - Parent-organization policies.
 - [engineering_philosophies.md](./engineering_philosophies.md) - Engineering philosophies for product work.
 - [product_memory_workflow.md](./product_memory_workflow.md) - Shared guidance for project memory, queue, packets, review, and cross-session workflow.
+- [repo_creation_runbook.md](./repo_creation_runbook.md) - Agent-consumable runbook for bootstrapping new product repos.
 - [cpp_architecture_playbook.md](./cpp_architecture_playbook.md) - C++ architecture and decomposition guidance.
 - [cpp_architecture_review.md](./cpp_architecture_review.md) - C++ architecture review checklist for humans and agents.
 - [cpp_performance_playbook.md](./cpp_performance_playbook.md) - C++ performance guidance for edge-native AI, real-time, and hot-path work.
@@ -23,6 +24,7 @@ cd <product-repo>/docs/decisions
 ln -s ../../../plainsight-systems-governance/plainsight_policies.md .
 ln -s ../../../plainsight-systems-governance/engineering_philosophies.md .
 ln -s ../../../plainsight-systems-governance/product_memory_workflow.md .
+ln -s ../../../plainsight-systems-governance/repo_creation_runbook.md .
 ln -s ../../../plainsight-systems-governance/cpp_architecture_playbook.md .
 ln -s ../../../plainsight-systems-governance/cpp_architecture_review.md .
 ln -s ../../../plainsight-systems-governance/cpp_performance_playbook.md .

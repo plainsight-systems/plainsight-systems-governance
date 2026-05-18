@@ -21,6 +21,7 @@ Each active product repo should maintain:
 | `docs/decisions/MEMORY.md` | Index over locked decisions, research, and inherited governance docs. |
 | `docs/decisions/QUEUE.md` | Current work queue and packet state. |
 | `docs/decisions/workflow.md` | How implementation work moves through roles, review, QA, and acceptance. |
+| `docs/decisions/repo_creation_runbook.md` | Inherited bootstrap runbook for creating or normalizing repos. |
 | `docs/decisions/packets/` | Scoped implementation packets. |
 | `docs/research/` | Findings, investigations, lessons, and halted-work notes. |
 
