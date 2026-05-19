@@ -10,35 +10,57 @@ These philosophies apply across Plainsight Systems products. Product repos may
 add local elaborations, but should not weaken these principles without an
 explicit governance update.
 
-## Real Product, Narrow Slice
+## Lineage
 
-Early products should demonstrate the real product on a narrow scope, not a
-lower-fidelity demo of a future product.
+Two inheritances — and they are concepts, not companies.
+
+The first is **product purity**: Apple in the Jobs era. The discipline was never
+aesthetic minimalism — it was the refusal to choose between simplicity and
+power. A product had to be genuinely capable and deeply configurable and, at the
+same time, immediately intuitive. Neither was traded for the other. And it had
+to be finished — complete to the last detail, down to how a keyboard sits in its
+stand. The industry has always treated simple and powerful as opposites; purity
+is the refusal of that trade-off, and the engineering to deliver both.
+
+The second is **performance discipline**: id Tech in the Carmack era, when the
+engine wrung from ordinary hardware what the market was certain it could not do.
+
+Neither is an endorsement of a company. Each names a phase — the moment a
+particular discipline was at its sharpest — and that discipline is what
+Plainsight Systems is built to inherit.
+
+Most companies shipping AI inherited neither. They assume intelligence is
+expensive, remote, and rented, because that is the easiest thing to build and
+the easiest thing to bill. Plainsight Systems assumes the opposite — and then
+does the engineering to make the opposite true.
+
+The two sections that follow make each inheritance operational.
+
+## Product Purity
+
+Product purity is the refusal of the simple-versus-powerful trade-off, and the
+discipline of shipping finished work — not a preview of finished work.
+
+### Real Product, Narrow Slice
+
+Early products should demonstrate the real product on a narrow scope, at full
+intended quality — not a lower-fidelity demo of a future product. The slice is
+narrow on purpose; the quality on that slice is uncompromising.
 
 This means:
 
 - Narrow scope is acceptable.
 - Lower quality inside the chosen scope is not.
-- Contract relaxations must be defensible because the original contract was wrong, not because it was hard.
-- "We can fix this after the demo" is a smell. Re-scope narrower or build the slice correctly.
+- Contract relaxations must be defensible because the original contract was
+  wrong, not because the work was hard.
+- "We can fix this after the demo" is a smell. Re-scope narrower, or build the
+  slice correctly.
 
-### The Apple II standard
+"Vision over feasibility" is about choosing the right product and the right
+slice to show first — never about lowering the fidelity of what ships in that
+slice.
 
-The reference point is the Apple II. It shipped as the real product at full
-intended quality. It had limitations — memory, peripherals, software ecosystem
-— but every part that shipped was the product as conceived, not a placeholder
-for a better version later. Markkula funded the product as it stood, not a demo
-of a future product. The Macintosh launch was the Macintosh, not a Macintosh
-demo. The investor, and the first customers, saw what the product *was* — not
-what it would later become.
-
-An early-stage demonstration is therefore a demonstration *of the real
-product*, at full intended quality, on a deliberately narrow slice. The slice
-is narrow on purpose; the quality on that slice is uncompromising. "Vision over
-feasibility" is about choosing the right product to build and the right slice
-to show first — never about lowering the fidelity of what ships in that slice.
-
-### Demo-ware is forbidden
+### Demo-ware Is Forbidden
 
 "Demo-ware" — a lower-fidelity preview of the real product, with "good enough
 for now" workarounds slated to be fixed for the commercial release — is the
@@ -59,11 +81,11 @@ opposite of this philosophy and is forbidden.
   demonstrated on a narrow scope, expanding to broader scope over time. If a
   plan contains such an upgrade step, the early deliverable was demo-ware.
 
-### Simple without taking control away
+### Simple Without Taking Control Away
 
-The Apple reference point is not minimalism for its own sake. The goal is to
-make the product feel obvious, calm, and approachable while preserving the
-user's ability to understand, inspect, correct, and override important behavior.
+Purity is not minimalism for its own sake. The goal is to make the product feel
+obvious, calm, and approachable while preserving the user's ability to
+understand, inspect, correct, and override important behavior.
 
 Simplicity means the product has done the thinking work before the user arrives.
 It does not mean hiding consequential state, removing necessary controls, or
@@ -90,10 +112,36 @@ This means:
   map to real user intent, risk, cost, privacy, or output quality.
 
 For agents and implementers, "make it simpler" is not permission to delete
-capability. The correct question is: what is the smallest understandable
-surface that still gives the user meaningful control over the outcome?
+capability. The correct question is: what is the smallest understandable surface
+that still gives the user meaningful control over the outcome?
 
-## Hardware and Platform Specificity
+## Performance Discipline
+
+Performance discipline is the refusal to accept the market's assumed limits on
+ordinary hardware — and the engineering to prove those limits wrong.
+
+### Ordinary Hardware, Refused Limits
+
+The market assumes that real capability — especially AI — requires expensive,
+remote, rented infrastructure. That assumption is convenient: it is the easiest
+thing to build and the easiest thing to bill. Performance discipline refuses it.
+The limits of ordinary hardware are a challenge to be engineered against, not a
+fixed ceiling.
+
+This means:
+
+- Treat "this needs a bigger machine" or "this needs a remote service" as a
+  hypothesis to disprove, not a starting assumption.
+- Measure before concluding something cannot run locally; profile the real
+  workload on the real target.
+- Extract capability from the hardware the user already owns before reaching for
+  rented capacity.
+- Local-first is the consequence, not the slogan: when the engineering is done,
+  intelligence runs on owned, ordinary hardware — inspectable, and not metered.
+- Cost, latency, and dependence on a vendor are product properties. Treat
+  regressions in them as defects, not as the price of doing business.
+
+### Hardware and Platform Specificity
 
 When the product depends on a chosen platform, write to that platform honestly.
 Do not add portability layers or abstractions for hypothetical future swaps.
@@ -105,22 +153,6 @@ This means:
 - Keep abstractions load-bearing.
 - Treat popular defaults as leads, not decisions.
 
-For Appario Native, this principle means the native installed app should use
-platform-native capabilities where they materially improve merchant outcomes,
-reliability, or trust. It should not remain a web app in a native wrapper unless
-that is an explicit product decision.
-
-## Merchant Utility Over SaaS Inertia
-
-Appario started as a focused SaaS scan/report workflow. The native product is a
-different shape: an installed merchant workbench with multiple functions.
-
-This means:
-
-- Product decisions should start from merchant workflows, not from preserving the old web platform.
-- The installed app should earn its installation with persistent utility, local context, and operational convenience.
-- The prior scanner/report slice is input material, not a constraint that defines the new product boundary.
-
 ## Test the Contract
 
 Build-green is not proof. Tests and manual verification should pin the product
@@ -130,4 +162,29 @@ This means:
 
 - Non-trivial changes require deterministic verification.
 - Tests must not mock away the risk that made the change meaningful.
-- If a behavior cannot be tested, either redesign the behavior or document why the remaining risk is accepted.
+- If a behavior cannot be tested, either redesign the behavior or document why
+  the remaining risk is accepted.
+
+## Brand Elaborations
+
+This section applies the philosophies above to a specific operating brand. It is
+brand-specific and internal — it is not part of the general philosophy, and is
+excluded from any public copy of this document.
+
+### Appario Native
+
+**Platform-native by default.** Elaborating *Hardware and Platform Specificity*:
+the native installed app should use platform-native capabilities where they
+materially improve merchant outcomes, reliability, or trust. It should not remain
+a web app in a native wrapper unless that is an explicit product decision.
+
+**Merchant utility over SaaS inertia.** Appario started as a focused SaaS
+scan/report workflow. The native product is a different shape — an installed
+merchant workbench with multiple functions.
+
+- Product decisions should start from merchant workflows, not from preserving
+  the old web platform.
+- The installed app should earn its installation with persistent utility, local
+  context, and operational convenience.
+- The prior scanner/report slice is input material, not a constraint that
+  defines the new product boundary.
